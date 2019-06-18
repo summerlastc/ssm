@@ -1,8 +1,0 @@
-<component name="ArtifactManager">
-  <artifact type="war" name="itcast-ssm-web:war">
-    <output-path>$PROJECT_DIR$/itcast-ssm-web/target</output-path>
-    <root id="archive" name="maven_web.war">
-      <element id="artifact" artifact-name="itcast-ssm-web:war exploded" />
-    </root>
-  </artifact>
-</component>
