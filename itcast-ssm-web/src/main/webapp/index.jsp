@@ -1,11 +1,7 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java" isELIgnored="false" %>
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<html>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+         pageEncoding="UTF-8"%>
 <html>
 <body>
-<a href="product/findAll.do">查询所有</a>
-
-
-
+<jsp:forward page="/pages/main.jsp"></jsp:forward>
 </body>
 </html>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/itcast-ssm-dao/itcast-ssm-dao.iml" filepath="$PROJECT_DIR$/itcast-ssm-dao/itcast-ssm-dao.iml" />
+      <module fileurl="file://$PROJECT_DIR$/itcast-ssm-domain/itcast-ssm-domain.iml" filepath="$PROJECT_DIR$/itcast-ssm-domain/itcast-ssm-domain.iml" />
+      <module fileurl="file://$PROJECT_DIR$/itcast-ssm-service/itcast-ssm-service.iml" filepath="$PROJECT_DIR$/itcast-ssm-service/itcast-ssm-service.iml" />
+      <module fileurl="file://$PROJECT_DIR$/itcast-ssm-web/itcast-ssm-web.iml" filepath="$PROJECT_DIR$/itcast-ssm-web/itcast-ssm-web.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ssm.iml" filepath="$PROJECT_DIR$/ssm.iml" />
+    </modules>
+  </component>
+</project>

@@ -10,7 +10,7 @@ import java.util.List;
 @Repository
 public interface IProductDao {
 
-        @Select("select *from product")
+        @Select("select *from  product")
     List<Product> findAll() throws Exception;
 
 
