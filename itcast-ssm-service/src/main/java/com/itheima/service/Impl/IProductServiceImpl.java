@@ -21,4 +21,11 @@ public class IProductServiceImpl implements IProductService {
         return list;
         }
 
+    @Override
+    public void saveProduct(Product product) throws Exception {
+
+       iProductDao.save(product);
+
+    }
+
 }

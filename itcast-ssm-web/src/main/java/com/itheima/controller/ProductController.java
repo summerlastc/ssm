@@ -22,6 +22,13 @@ import java.util.List;
             mv.setViewName("product-list");
             return mv;
         }
+
+
+        @RequestMapping("/save")
+        public String saveProduct(Product product)throws Exception{
+            productService.saveProduct(product);
+            return "redirect:findAll.do";
+        }
     }
 
 
