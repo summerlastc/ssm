@@ -1,6 +1,8 @@
 package com.itheima.service.Impl;
 
+import com.github.pagehelper.PageHelper;
 import com.itheima.dao.IProductDao;
+import com.itheima.domain.Orders;
 import com.itheima.service.IProductService;
 import com.itheima.domain.Product;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,9 +19,10 @@ public class IProductServiceImpl implements IProductService {
     private IProductDao iProductDao;
     @Override
     public List<Product> findAll(Integer page, Integer size) throws Exception {
-        List<Product> list = iProductDao.findAll();
-        return list;
-        }
+        //参数pageNum 是页码值   参数pageSize 代表是每页显示条数
+        PageHelper.startPage(page, size);
+        return iProductDao.findAll();
+    }
 
     @Override
     public void saveProduct(Product product) throws Exception {
