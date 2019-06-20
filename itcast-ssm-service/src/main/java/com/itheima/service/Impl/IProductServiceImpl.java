@@ -16,7 +16,7 @@ public class IProductServiceImpl implements IProductService {
     @Autowired
     private IProductDao iProductDao;
     @Override
-    public List<Product> findAll() throws Exception {
+    public List<Product> findAll(Integer page, Integer size) throws Exception {
         List<Product> list = iProductDao.findAll();
         return list;
         }

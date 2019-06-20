@@ -1,6 +1,7 @@
 package com.itheima.domain;
 
-import com.itheima.ssm.utils.DateUtils;
+
+import com.itheima.utils.DateUtils;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import java.util.Date;

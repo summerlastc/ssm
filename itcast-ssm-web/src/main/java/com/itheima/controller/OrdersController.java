@@ -1,6 +1,7 @@
 package com.itheima.controller;
 
 
+import com.github.pagehelper.PageInfo;
 import com.itheima.domain.Orders;
 import com.itheima.service.IOrdersService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,15 +18,28 @@ public class OrdersController {
 
     @Autowired
     private IOrdersService ordersService;
-    //未分页
+
     @RequestMapping("/findAll.do")
     public ModelAndView findAll(@RequestParam(name = "page", required = true, defaultValue =
-            "1") Integer page, @RequestParam(name = "pageSize", required = true, defaultValue = "10")
-                                        Integer pageSize) throws Exception {
-        List<Orders> ordersList = ordersService.findAllByPage(page, pageSize);
+            "1") Integer page, @RequestParam(name = "size", required = true, defaultValue = "4")
+                                        Integer size) throws Exception {
+
         ModelAndView mv = new ModelAndView();
-        mv.setViewName("order-list");
-        mv.addObject("ordersList", ordersList);
+        List<Orders> ordersList = ordersService.findAll(page, size);
+        PageInfo pageInfo=new PageInfo(ordersList);
+        mv.setViewName("orders-page-list");
+        mv.addObject("pageInfo", pageInfo);
+        return mv;
+    }
+
+
+    @RequestMapping("/findById.do")
+    public ModelAndView findById(@RequestParam(name = "id", required = true) String ordersId) throws Exception {
+
+        Orders orders = ordersService.findById(ordersId);
+        ModelAndView mv = new ModelAndView();
+        mv.setViewName("orders-show");
+        mv.addObject("orders", orders);
         return mv;
     }
 }
