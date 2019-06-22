@@ -1,5 +1,6 @@
 package com.itheima.service;
 
+import com.itheima.domain.Permission;
 import com.itheima.domain.Role;
 
 
@@ -10,4 +11,7 @@ public interface IRoleService {
     public List<Role> findAll() throws Exception;
 
     void save(Role role) throws Exception;
+
+
+
 }

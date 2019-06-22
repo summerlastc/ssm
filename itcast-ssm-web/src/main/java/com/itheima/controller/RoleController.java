@@ -26,7 +26,7 @@ public class RoleController {
     @RequestMapping("/findAll.do")
     public ModelAndView findAll() throws Exception {
         ModelAndView mv = new ModelAndView();
-        List<Role> roleList = roleService.findAll();
+        List<Role> roleList =roleService.findAll();
         mv.addObject("roleList", roleList);
         mv.setViewName("role-list");
         return mv;

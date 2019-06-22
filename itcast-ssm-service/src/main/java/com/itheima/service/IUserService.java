@@ -1,5 +1,6 @@
 package com.itheima.service;
 
+import com.itheima.domain.Role;
 import com.itheima.domain.UserInfo;
 
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -12,4 +13,10 @@ public interface IUserService extends UserDetailsService {
     void save(UserInfo userInfo) throws Exception;
 
     UserInfo findById(String id) throws Exception;
+    public List<Role> findOtherRole(String id);
+
+    void addRoleToUser(String userId, String[] roleIds);
+
+
+
 }

@@ -1,6 +1,7 @@
 package com.itheima.service.Impl;
 
 import com.itheima.dao.IRoleDao;
+import com.itheima.domain.Permission;
 import com.itheima.domain.Role;
 import com.itheima.service.IRoleService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,8 +22,12 @@ public class IRoleServiceImpl implements IRoleService {
         roleDao.save(role);
     }
 
+
+
     @Override
     public List<Role> findAll() throws Exception{
         return roleDao.findAll();
     }
+
+
 }

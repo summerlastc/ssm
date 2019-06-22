@@ -23,4 +23,9 @@ public interface IRoleDao {
 
     @Insert("insert into role(roleName,roleDesc) values(#{roleName},#{roleDesc})")
     void save(Role role);
+
+
+    
+
+
 }

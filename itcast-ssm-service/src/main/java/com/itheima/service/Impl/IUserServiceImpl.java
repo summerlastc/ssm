@@ -28,9 +28,22 @@ public class IUserServiceImpl implements IUserService {
     private BCryptPasswordEncoder bCryptPasswordEncoder;
 
     @Override
-    public UserInfo findById(String id) throws Exception{
+    public UserInfo findById(String id) throws Exception {
 
-        return  userDao.findById(id);
+        return userDao.findById(id);
+    }
+
+    @Override
+    public List<Role> findOtherRole(String id) {
+    return userDao.findOtherRoles(id);
+    }
+
+    @Override
+    public void addRoleToUser(String userId, String[] roleIds) {
+
+        for(String roleId:roleIds){
+            userDao.addRoleToUser(userId,roleId);
+        }
     }
 
     @Override
@@ -68,4 +81,6 @@ public class IUserServiceImpl implements IUserService {
         }
         return list;
     }
+
+
 }

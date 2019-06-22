@@ -1,10 +1,13 @@
 package com.itheima.controller;
 
+import com.itheima.domain.Role;
 import com.itheima.domain.UserInfo;
+import com.itheima.service.IRoleService;
 import com.itheima.service.IUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
@@ -15,6 +18,7 @@ public class UserController {
 
     @Autowired
     private IUserService userService;
+
 
     //查询指定id的用户
     @RequestMapping("/findById.do")
@@ -40,5 +44,23 @@ public class UserController {
         mv.addObject("userList", userList);
         mv.setViewName("user-list");
         return mv;
+    }
+
+    @RequestMapping("/findUserByIdAndAllRole.do")
+    public ModelAndView findUserByIdAndAllRole(@RequestParam(name = "id", required = true) String userid) throws Exception {
+        UserInfo user = userService.findById(userid);
+        List<Role> roleList = userService.findOtherRole(userid);
+        ModelAndView mv = new ModelAndView();
+        mv.addObject("user", user);
+        mv.addObject("roleList", roleList);
+        mv.setViewName("user-role-add");
+        return mv;
+    }
+
+    //给用户添加角色
+    @RequestMapping("/addRoleToUser.do")
+    public String addRoleToUser(@RequestParam(name = "userId", required = true) String userId, @RequestParam(name = "ids", required = true) String[] roleIds) {
+        userService.addRoleToUser(userId, roleIds);
+        return "redirect:findAll.do";
     }
 }
