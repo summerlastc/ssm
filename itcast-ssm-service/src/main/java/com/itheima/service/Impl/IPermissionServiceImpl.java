@@ -19,7 +19,14 @@ public class IPermissionServiceImpl implements IPermissionService {
     }
 
     @Override
+    public List<Permission> findPermissionByRoleId(String id) throws Exception {
+        return permissionDao.findPermissionByRoleId(id);
+    }
+
+    @Override
     public List<Permission> findAll() throws Exception{
         return permissionDao.findAll();
     }
+
+
 }

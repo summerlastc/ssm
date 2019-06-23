@@ -9,4 +9,5 @@ public interface IPermissionService {
     public List<Permission> findAll() throws Exception;
 
     void save(Permission permission) throws Exception;
+    public List<Permission> findPermissionByRoleId(String id) throws Exception;
 }

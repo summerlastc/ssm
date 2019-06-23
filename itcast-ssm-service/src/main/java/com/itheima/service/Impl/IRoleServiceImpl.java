@@ -22,6 +22,20 @@ public class IRoleServiceImpl implements IRoleService {
         roleDao.save(role);
     }
 
+    @Override
+    public Role findById(String roleId) {
+        return roleDao.findById(roleId);
+    }
+
+    @Override
+    public List<Permission> findOtherPermissions(String roleId) {
+        return roleDao.findOtherPermissions(roleId);
+    }
+
+    @Override
+    public void addPermissionToRole(String roleId, String[] permissionIds) {
+        roleDao.addPermissionToRole(roleId,permissionIds);
+    }
 
 
     @Override
