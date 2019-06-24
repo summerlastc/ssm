@@ -1,5 +1,6 @@
 package com.itheima.service.Impl;
 
+import com.github.pagehelper.PageHelper;
 import com.itheima.dao.IPermissionDao;
 import com.itheima.domain.Permission;
 import com.itheima.service.IPermissionService;
@@ -24,7 +25,8 @@ public class IPermissionServiceImpl implements IPermissionService {
     }
 
     @Override
-    public List<Permission> findAll() throws Exception{
+    public List<Permission> findAll(Integer page, Integer size) throws Exception{
+        PageHelper.startPage(page, size);
         return permissionDao.findAll();
     }
 

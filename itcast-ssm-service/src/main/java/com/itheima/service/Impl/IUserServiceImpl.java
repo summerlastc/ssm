@@ -1,5 +1,6 @@
 package com.itheima.service.Impl;
 
+import com.github.pagehelper.PageHelper;
 import com.itheima.dao.IUserDao;
 import com.itheima.domain.Role;
 import com.itheima.domain.UserInfo;
@@ -54,7 +55,8 @@ public class IUserServiceImpl implements IUserService {
     }
 
     @Override
-    public List<UserInfo> findAll() throws Exception {
+    public List<UserInfo> findAll(Integer page, Integer size) throws Exception {
+        PageHelper.startPage(page, size);
         return userDao.findAll();
     }
 

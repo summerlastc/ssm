@@ -145,17 +145,17 @@
 								</thead>
 								<tbody>
 
-									<c:forEach items="${userList}" var="user">
+									<c:forEach items="${pageInfo.list}" var="UserInfo">
 										<tr>
 											<td><input name="ids" type="checkbox"></td>
-											<td>${user.id }</td>
-											<td>${user.username }</td>
-											<td>${user.email }</td>
-											<td>${user.phoneNum }</td>
-											<td>${user.statusStr }</td>											
+											<td>${UserInfo.id }</td>
+											<td>${UserInfo.username }</td>
+											<td>${UserInfo.email }</td>
+											<td>${UserInfo.phoneNum }</td>
+											<td>${UserInfo.statusStr }</td>
 											<td class="text-center">
-												<a href="${pageContext.request.contextPath}/user/findById.do?id=${user.id}" class="btn bg-olive btn-xs">详情</a>
-												<a href="${pageContext.request.contextPath}/user/findUserByIdAndAllRole.do?id=${user.id}" class="btn bg-olive btn-xs">添加角色</a>
+												<a href="${pageContext.request.contextPath}/user/findById.do?id=${UserInfo.id}" class="btn bg-olive btn-xs">详情</a>
+												<a href="${pageContext.request.contextPath}/user/findUserByIdAndAllRole.do?id=${UserInfo.id}" class="btn bg-olive btn-xs">添加角色</a>
 											</td>
 										</tr>
 									</c:forEach>
@@ -183,7 +183,7 @@
 					<div class="box-footer">
 						<div class="pull-left">
 							<div class="form-group form-inline">
-								总共2 页，共14 条数据。 每页 <select class="form-control">
+								总共${pageInfo.pages} 页，共${pageInfo.total} 条数据。 每页 <select class="form-control" id="changePageSize" onchange="changePageSize()">
 									<option>1</option>
 									<option>2</option>
 									<option>3</option>
@@ -195,15 +195,17 @@
 
 						<div class="box-tools pull-right">
 							<ul class="pagination">
-								<li><a href="#" aria-label="Previous">首页</a></li>
-								<li><a href="#">上一页</a></li>
-								<li><a href="#">1</a></li>
-								<li><a href="#">2</a></li>
-								<li><a href="#">3</a></li>
-								<li><a href="#">4</a></li>
-								<li><a href="#">5</a></li>
-								<li><a href="#">下一页</a></li>
-								<li><a href="#" aria-label="Next">尾页</a></li>
+								<li>
+									<a href="${pageContext.request.contextPath}/user/findAll.do?page=1&size=${pageInfo.pageSize}" aria-label="Previous">首页</a>
+								</li>
+								<li><a href="${pageContext.request.contextPath}/user/findAll.do?page=${pageInfo.pageNum-1}&size=${pageInfo.pageSize}">上一页</a></li>
+								<c:forEach begin="1" end="${pageInfo.pages}" var="pageNum">
+									<li><a href="${pageContext.request.contextPath}/user/findAll.do?page=${pageNum}&size=${pageInfo.pageSize}">${pageNum}</a></li>
+								</c:forEach>
+								<li><a href="${pageContext.request.contextPath}/user/findAll.do?page=${pageInfo.pageNum+1}&size=${pageInfo.pageSize}">下一页</a></li>
+								<li>
+									<a href="${pageContext.request.contextPath}/user/findAll.do?page=${pageInfo.pages}&size=${pageInfo.pageSize}" aria-label="Next">尾页</a>
+								</li>
 							</ul>
 						</div>
 
@@ -280,6 +282,16 @@
 		<script src="../plugins/ionslider/ion.rangeSlider.min.js"></script>
 		<script src="../plugins/bootstrap-slider/bootstrap-slider.js"></script>
 		<script>
+
+
+            function changePageSize() {
+                //获取下拉框的值
+                var pageSize = $("#changePageSize").val();
+
+                //向服务器发送请求，改变没页显示条数
+                location.href = "${pageContext.request.contextPath}/user/findAll.do?page=1&size="
+                    + pageSize;
+            }
 			$(document).ready(function() {
 				// 选择框
 				$(".select2").select2();

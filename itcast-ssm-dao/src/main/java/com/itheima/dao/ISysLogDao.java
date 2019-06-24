@@ -1,8 +1,7 @@
 package com.itheima.dao;
 
 import com.itheima.domain.SysLog;
-import org.apache.ibatis.annotations.Insert;
-import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.*;
 
 import java.util.List;
 

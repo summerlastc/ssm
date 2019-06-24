@@ -1,5 +1,6 @@
 package com.itheima.controller;
 
+import com.github.pagehelper.PageInfo;
 import com.itheima.domain.Role;
 import com.itheima.domain.UserInfo;
 import com.itheima.service.IRoleService;
@@ -38,10 +39,11 @@ public class UserController {
     }
 
     @RequestMapping("/findAll.do")
-    public ModelAndView findAll() throws Exception {
+    public ModelAndView findAll(@RequestParam(name = "page", required = true, defaultValue ="1") Integer page, @RequestParam(name = "size", required = true, defaultValue = "10")Integer size) throws Exception {
         ModelAndView mv = new ModelAndView();
-        List<UserInfo> userList = userService.findAll();
-        mv.addObject("userList", userList);
+        List<UserInfo> userList = userService.findAll(page,size);
+        PageInfo pageInfo=new PageInfo(userList);
+        mv.addObject("pageInfo", pageInfo);
         mv.setViewName("user-list");
         return mv;
     }

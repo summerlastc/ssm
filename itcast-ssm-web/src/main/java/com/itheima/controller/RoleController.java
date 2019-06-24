@@ -1,5 +1,6 @@
 package com.itheima.controller;
 
+import com.github.pagehelper.PageInfo;
 import com.itheima.domain.Permission;
 import com.itheima.domain.Role;
 import com.itheima.service.IRoleService;
@@ -25,10 +26,11 @@ public class RoleController {
     }
 
     @RequestMapping("/findAll.do")
-    public ModelAndView findAll() throws Exception {
+    public ModelAndView findAll(@RequestParam(name = "page", required = true, defaultValue ="1") Integer page, @RequestParam(name = "size", required = true, defaultValue = "6")Integer size) throws Exception {
         ModelAndView mv = new ModelAndView();
-        List<Role> roleList =roleService.findAll();
-        mv.addObject("roleList", roleList);
+        List<Role> roleList =roleService.findAll(page, size);
+        PageInfo pageInfo=new PageInfo(roleList);
+        mv.addObject("pageInfo", pageInfo);
         mv.setViewName("role-list");
         return mv;
     }

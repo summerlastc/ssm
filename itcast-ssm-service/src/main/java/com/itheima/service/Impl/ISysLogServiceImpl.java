@@ -1,5 +1,6 @@
 package com.itheima.service.Impl;
 
+import com.github.pagehelper.PageHelper;
 import com.itheima.dao.ISysLogDao;
 import com.itheima.domain.SysLog;
 import com.itheima.service.ISysLogService;
@@ -14,13 +15,14 @@ public class ISysLogServiceImpl implements ISysLogService {
 
         @Autowired
         private ISysLogDao sysLogDao;
-        @Override
-        public void save(SysLog log) throws Exception {
-            sysLogDao.save(log);
+
+    @Override
+    public List<SysLog> findAll(Integer page, Integer size) throws Exception {
+            PageHelper.startPage(page, size);
+            return sysLogDao.findAll();
         }
     @Override
-    public List<SysLog> findAll() throws Exception {
-        return sysLogDao.findAll();
-        }
-
+    public void save(SysLog log) throws Exception {
+        sysLogDao.save(log);
+    }
 }

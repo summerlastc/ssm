@@ -3,7 +3,7 @@ package com.itheima.service.Impl;
 import com.github.pagehelper.PageHelper;
 import com.itheima.dao.IOrdersDao;
 import com.itheima.domain.Orders;
-import com.itheima.domain.Product;
+
 import com.itheima.service.IOrdersService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

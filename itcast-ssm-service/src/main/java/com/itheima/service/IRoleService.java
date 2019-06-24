@@ -12,7 +12,7 @@ import java.util.List;
 
 public interface IRoleService {
 
-    public List<Role> findAll() throws Exception;
+    public List<Role> findAll(Integer page, Integer pageSize) throws Exception;
 
     void save(Role role) throws Exception;
 

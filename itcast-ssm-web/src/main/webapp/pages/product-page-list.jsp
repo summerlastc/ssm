@@ -318,7 +318,7 @@
 					<div class="box-footer">
 						<div class="pull-left">
 							<div class="form-group form-inline">
-								总共2 页，共14 条数据。 每页 <select class="form-control"id="changePageSize" onchange="changePageSize()">
+								总共${pageInfo.pages} 页，共${pageInfo.total} 条数据。 每页 <select class="form-control"id="changePageSize" onchange="changePageSize()">
 									<option class="pageSize">1</option>
 									<option class="pageSize">2</option>
 									<option class="pageSize">3</option>

@@ -1,5 +1,6 @@
 package com.itheima.service.Impl;
 
+import com.github.pagehelper.PageHelper;
 import com.itheima.dao.IRoleDao;
 import com.itheima.domain.Permission;
 import com.itheima.domain.Role;
@@ -34,12 +35,14 @@ public class IRoleServiceImpl implements IRoleService {
 
     @Override
     public void addPermissionToRole(String roleId, String[] permissionIds) {
-        roleDao.addPermissionToRole(roleId,permissionIds);
+        for(String permissionId:permissionIds){
+            roleDao.addPermissionToRole(roleId,permissionId);
+        }
     }
 
-
     @Override
-    public List<Role> findAll() throws Exception{
+    public List<Role> findAll(Integer page, Integer size) throws Exception{
+        PageHelper.startPage(page, size);
         return roleDao.findAll();
     }
 
